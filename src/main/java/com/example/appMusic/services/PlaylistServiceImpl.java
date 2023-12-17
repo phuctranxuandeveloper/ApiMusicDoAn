@@ -2,9 +2,12 @@ package com.example.appMusic.services;
 
 import com.example.appMusic.DTO.PlaylistDTO;
 import com.example.appMusic.entities.Playlist;
+import com.example.appMusic.entities.User;
 import com.example.appMusic.mapper.PlaylistToPlaylistDTO;
 import com.example.appMusic.repositories.PlaylistRepository;
+import jakarta.transaction.Transactional;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.jpa.repository.Modifying;
 import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
@@ -40,4 +43,20 @@ public class PlaylistServiceImpl implements PlaylistService{
                 .stream().map(playlistToPlaylistDTO)
                 .collect(Collectors.toList());
     }
+
+    @Transactional
+    @Override
+    public Playlist savePlaylist(String name, User user) {
+        Playlist pl = new Playlist();
+        pl.setName(name);
+        pl.setUser(user);
+        playlistRepository.save(pl);
+        return pl;
+    }
+
+    @Override
+    public void addSongToPlaylist(Integer playlist_id, Integer song_id) {
+        playlistRepository.addSongToPlaylist(playlist_id, song_id);
+    }
+
 }

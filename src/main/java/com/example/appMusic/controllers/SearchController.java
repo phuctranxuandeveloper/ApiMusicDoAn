@@ -5,6 +5,8 @@ import com.example.appMusic.DTO.SongDTO;
 import com.example.appMusic.services.ArtistService;
 import com.example.appMusic.services.SongService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -22,7 +24,7 @@ public class SearchController {
     @Autowired
     private SongService songService;
     @GetMapping
-    public Map<String, Object> searchByKeyword(@RequestParam String q){
+    public ResponseEntity<?> searchByKeyword(@RequestParam String q){
         List<SongDTO> listSong = songService.searchSongByName(q);
         List<ArtistDTO> listArtist = artistService.searchArtistByName(q);
         int total = listSong.size() + listArtist.size();
@@ -30,6 +32,6 @@ public class SearchController {
         apiResponse.put("total", total);
         apiResponse.put("songs", listSong);
         apiResponse.put("artists", listArtist);
-        return apiResponse;
+        return new ResponseEntity<>(apiResponse, HttpStatus.OK);
     }
 }

@@ -43,4 +43,11 @@ public class SongServiceImpl implements SongService{
                 .stream().map(songToSongDTO)
                 .collect(Collectors.toList());
     }
+
+    @Override
+    public List<SongDTO> findSongByArtistId(Integer id) {
+        return songRepository.findByArtistArtistId(id)
+                .stream().map(songToSongDTO)
+                .collect(Collectors.toList());
+    }
 }

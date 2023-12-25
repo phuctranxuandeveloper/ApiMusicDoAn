@@ -22,4 +22,7 @@ public interface PlaylistRepository extends JpaRepository<Playlist, Integer> {
     @Query(value = "INSERT INTO playlistsong (playlistId, songId) VALUES (:playlistId, :songId)", nativeQuery = true)
     void addSongToPlaylist(@Param("playlistId") Integer playlistId, @Param("songId") Integer songId);
 
+    List<Playlist> findPlaylistByUserUserId(Integer id);
 }
+
+

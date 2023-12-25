@@ -19,4 +19,14 @@ public class UserServiceImpl implements UserService{
     public Optional<User> findUserById(Integer id) {
         return userRepository.findUserByUserId(id);
     }
+
+    @Override
+    public Optional<User> findUserByUsernameAndPassword(String username, String password) {
+        return userRepository.findUserByUsernameAndPasswords(username, password);
+    }
+
+    @Override
+    public void addUser(String firstname, String lastname, String email, String username, String password) {
+        userRepository.addUser(firstname, lastname, email, username, password);
+    }
 }

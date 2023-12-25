@@ -34,6 +34,14 @@ public class User {
     @Column(name = "avatar")
     private String avatar;
 
+    @Basic
+    @Column(name = "username")
+    private String username;
+
+    @Basic
+    @Column(name = "passwords")
+    private String passwords;
+
     public int getUserId() {
         return userId;
     }
@@ -80,5 +88,21 @@ public class User {
 
     public void setAvatar(String avatar) {
         this.avatar = avatar;
+    }
+
+    public String getUsername() {
+        return username;
+    }
+
+    public void setUsername(String username) {
+        this.username = username;
+    }
+
+    public String getPasswords() {
+        return passwords;
+    }
+
+    public void setPasswords(String passwords) {
+        this.passwords = passwords;
     }
 }

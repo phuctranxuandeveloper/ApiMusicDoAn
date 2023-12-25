@@ -59,4 +59,11 @@ public class PlaylistServiceImpl implements PlaylistService{
         playlistRepository.addSongToPlaylist(playlist_id, song_id);
     }
 
+    @Override
+    public List<PlaylistDTO> findPlaylistByUserId(Integer user_id) {
+        return playlistRepository.findPlaylistByUserUserId(user_id)
+                .stream().map(playlistToPlaylistDTO)
+                .collect(Collectors.toList());
+    }
+
 }

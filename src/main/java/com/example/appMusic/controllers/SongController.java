@@ -43,7 +43,15 @@ public class SongController {
         List<SongDTO> list = songService.findSongByArtistId(id);
         HashMap<String, Object> apiResponse = new HashMap<>();
         apiResponse.put("total", list.size());
-        apiResponse.put("songs", list);
+        apiResponse.put("list_song", list);
+        return new ResponseEntity<>(apiResponse, HttpStatus.OK);
+    }
+    @GetMapping(path = "playlist_id/{playlistId}")
+    public ResponseEntity<?> findSongByPlaylistId(@PathVariable Integer playlistId){
+        List<SongDTO> list = songService.findSongByPlaylistId(playlistId);
+        HashMap<String, Object> apiResponse = new HashMap<>();
+        apiResponse.put("total", list.size());
+        apiResponse.put("list_song", list);
         return new ResponseEntity<>(apiResponse, HttpStatus.OK);
     }
 }

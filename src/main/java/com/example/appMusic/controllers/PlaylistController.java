@@ -44,11 +44,16 @@ public class PlaylistController {
         if (user != null && name != null){
             Playlist playlist = playlistService.savePlaylist(name, user);
         }
-        return new ResponseEntity<>(HttpStatus.CREATED);
+        return ResponseEntity.status(HttpStatus.CREATED).body("Playlist created!");
     }
     @PostMapping(path = "add_song")
     public ResponseEntity<?> addSongToPlaylist(@RequestParam Integer playlist_id, @RequestParam Integer song_id){
         playlistService.addSongToPlaylist(playlist_id, song_id);
-        return new ResponseEntity<>(HttpStatus.CREATED);
+        return ResponseEntity.status(HttpStatus.CREATED).body("Add song successful!");
+    }
+    @GetMapping(path = "user/{user_id}")
+    public ResponseEntity<?> findPlaylistByUserId(@PathVariable Integer user_id){
+        List<PlaylistDTO> list = playlistService.findPlaylistByUserId(user_id);
+        return new ResponseEntity<>(list, HttpStatus.OK);
     }
 }

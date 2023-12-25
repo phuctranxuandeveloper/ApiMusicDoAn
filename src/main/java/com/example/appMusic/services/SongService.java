@@ -10,4 +10,5 @@ public interface SongService {
     List<SongDTO> searchSongByName(String key);
     List<SongDTO> findSongByTitle(String title);
     List<SongDTO> findSongByArtistId(Integer id);
+    List<SongDTO> findSongByPlaylistId(Integer playlistId);
 }

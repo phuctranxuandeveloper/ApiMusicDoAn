@@ -13,4 +13,5 @@ public interface PlaylistService {
     List<PlaylistDTO> findPlaylistByName(String name);
     Playlist savePlaylist(String name, User user);
     void addSongToPlaylist(Integer playlist_id, Integer song_id);
+    List<PlaylistDTO> findPlaylistByUserId(Integer user_id);
 }

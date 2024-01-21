@@ -1,5 +1,7 @@
 package com.example.appMusic.DTO;
 
+import com.example.appMusic.entities.Artist;
+
 import java.sql.Date;
 import java.sql.Time;
 import java.util.List;
@@ -11,19 +13,19 @@ public class SongDTO{
     Time duration;
     String avatar;
     String genre;
-    String nameArtist;
+    Artist artist;
     List<Integer> listPlaylist;
     List<String> listAlbum;
     String urlMusic;
 
-    public SongDTO(Integer id, String title, Date releaseDate, Time duration, String avatar, String genre, String nameArtist, List<Integer> listPlaylist, List<String> listAlbum, String urlMusic) {
+    public SongDTO(Integer id, String title, Date releaseDate, Time duration, String avatar, String genre, Artist artist, List<Integer> listPlaylist, List<String> listAlbum, String urlMusic) {
         this.id = id;
         this.title = title;
         this.releaseDate = releaseDate;
         this.duration = duration;
         this.avatar = avatar;
         this.genre = genre;
-        this.nameArtist = nameArtist;
+        this.artist = artist;
         this.listPlaylist = listPlaylist;
         this.listAlbum = listAlbum;
         this.urlMusic = urlMusic;
@@ -77,12 +79,12 @@ public class SongDTO{
         this.genre = genre;
     }
 
-    public String getNameArtist() {
-        return nameArtist;
+    public Artist getArtist() {
+        return artist;
     }
 
-    public void setNameArtist(String nameArtist) {
-        this.nameArtist = nameArtist;
+    public void setArtist(Artist artist) {
+        this.artist = artist;
     }
 
     public List<Integer> getListPlaylist() {

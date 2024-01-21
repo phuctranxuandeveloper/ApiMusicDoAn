@@ -1,5 +1,6 @@
 package com.example.appMusic.services;
 
+import com.example.appMusic.DTO.ArtistDTO;
 import com.example.appMusic.DTO.SongDTO;
 
 import java.util.List;
@@ -11,4 +12,5 @@ public interface SongService {
     List<SongDTO> findSongByTitle(String title);
     List<SongDTO> findSongByArtistId(Integer id);
     List<SongDTO> findSongByPlaylistId(Integer playlistId);
+//    ArtistDTO findArtistBySongId(Integer id);
 }

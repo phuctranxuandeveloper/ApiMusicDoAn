@@ -18,7 +18,7 @@ public class SongToSongDTO implements Function<Song, SongDTO> {
                 song.getDuration(),
                 song.getAvatar(),
                 song.getGenre().getName(),
-                song.getArtist().getName(),
+                song.getArtist(),
                 song.getPlaylists().stream().map(playlist -> playlist.getPlaylistId()).collect(Collectors.toList()),
                 song.getAlbums().stream().map(album -> album.getTitle()).collect(Collectors.toList()),
                 song.getUrlMusic()

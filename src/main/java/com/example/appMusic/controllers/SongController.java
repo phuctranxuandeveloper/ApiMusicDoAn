@@ -6,14 +6,12 @@ import com.example.appMusic.services.SongService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.stream.Collectors;
 
 @RestController
 @RequestMapping(path = "song")
@@ -23,6 +21,14 @@ public class SongController {
     @GetMapping
     public ResponseEntity<?> findAllSong(){
         List<SongDTO> list = songService.findAllSong();
+        Map<String, Object> apiResponse = new HashMap<>();
+        apiResponse.put("total", list.size());
+        apiResponse.put("list_song", list);
+        return new ResponseEntity<>(apiResponse, HttpStatus.OK);
+    }
+    @GetMapping(path = "/top")
+    public ResponseEntity<?> findTopSong(){
+        List<SongDTO> list = songService.findAllSong().stream().limit(5).collect(Collectors.toList());
         Map<String, Object> apiResponse = new HashMap<>();
         apiResponse.put("total", list.size());
         apiResponse.put("list_song", list);

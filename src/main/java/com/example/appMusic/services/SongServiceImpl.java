@@ -1,12 +1,16 @@
 package com.example.appMusic.services;
 
+import com.example.appMusic.DTO.ArtistDTO;
 import com.example.appMusic.DTO.SongDTO;
+import com.example.appMusic.entities.Artist;
+import com.example.appMusic.entities.Song;
 import com.example.appMusic.mapper.SongToSongDTO;
 import com.example.appMusic.repositories.SongRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.Optional;
 import java.util.stream.Collectors;
 
 @Service
@@ -57,4 +61,6 @@ public class SongServiceImpl implements SongService{
                 .stream().map(songToSongDTO)
                 .collect(Collectors.toList());
     }
+
+
 }
